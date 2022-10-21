@@ -17,6 +17,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: mkdir -p dist
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
@@ -32,3 +33,24 @@ jobs:
         with:
           name: dist
           path: dist
+  deploy:
+      name: Deploy 🚀
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Download artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: dist
+            path: dist
+        - name: Display structure of downloaded files
+          run: ls -R
+          working-directory: dist
+        - name: Sync files to hosting
+          uses: SamKirkland/FTP-Deploy-Action@4.0.0
+          with:
+            server: ftp://pmuk-test.dk:pF95Agb3HkGrdBxfzh6m@nt19.unoeuro.com/
+            username: pmuk-test.dk
+            password: ${{ secrets.ftp_password }}
