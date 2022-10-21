@@ -3,13 +3,18 @@
 }
 
 .user-button {
-    margin-left: .5em;
+    margin-left: 2em;
+    margin-right: 4em;
 }
 
 .top-row a {
     margin-left: 0;
 }
 
-.dropdown-item:hover {
-    background-color: white;
+.dropdown-item {
+    padding-right: 0px;
 }
+
+    .dropdown-item:hover {
+        background-color: white;
+    }

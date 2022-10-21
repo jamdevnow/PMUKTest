@@ -10,9 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+var dbConnectionString = builder.Configuration.GetConnectionString("PmukTestMySql");
 builder.Services.AddDbContext<PmukTestContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("PmukTestDb"));
+    options.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString));
 });
 
 builder.Services.AddControllersWithViews();

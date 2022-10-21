@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PMUKTest.Server.Services;
 
-public class AuthService : IAuthService
+public class AuthService : IAuthService 
 {
     private readonly PmukTestContext _context;
     private readonly IConfiguration _configuration;
