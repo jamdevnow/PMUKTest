@@ -28,7 +28,7 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
       - name: Archive production artifact
-        uses: actions/upload-artifacts@main
+        uses: actions/upload-artifact@v3
         with:
           name: dist
           path: dist
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@main
       - name: Download artifact
-        uses: actions/download-artifact@main
+        uses: actions/download-artifact@v3
         with:
           name: dist
           path: dist
