@@ -60,3 +60,4 @@ jobs:
           username: pmuk-test.dk
           password: ${{ secrets.ftp_password }}
           localDir: "Release"
+          server-dir: "/public_html/"
