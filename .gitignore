@@ -365,3 +365,6 @@ FodyWeavers.xsd
 
 # Exclude Sqlite db
 pmuktest.db
+
+# Exclude
+/Azure yml workflow.txt
