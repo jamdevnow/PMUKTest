@@ -32,6 +32,7 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: nt19.unoeuro.com/
+          server: "nt19.unoeuro.com"
           username: pmuk-test.dk
           password: ${{ secrets.ftp_password }}
+          localDir: "Release"
