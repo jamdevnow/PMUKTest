@@ -33,7 +33,13 @@ jobs:
         run: dotnet test --no-build --verbosity normal
         
       - name: dotnet Publish
-        run: dotnet publish -c Release --no-restore -o ./Release --sc true --runtime win-x86 -p:PublishTrimmed=true 
+        run: dotnet publish -c Release --no-restore -o ${{env.DOTNET_ROOT}}/PMUKTest --sc true --runtime win-x86 -p:PublishTrimmed=true
+        
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/PMUKTest
         
   deploy:
     name: Deploy 🚀
@@ -41,6 +47,12 @@ jobs:
     needs: build
     
     steps:
+    
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: .net-app
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
