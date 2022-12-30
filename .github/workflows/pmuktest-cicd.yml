@@ -16,10 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.x
           
@@ -35,11 +35,7 @@ jobs:
       - name: dotnet Publish
         run: dotnet publish -c Release --no-restore -o ${{env.DOTNET_ROOT}}/PMUKTest --sc true --runtime win-x86 -p:PublishTrimmed=true
         
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/PMUKTest
+      
         
   deploy:
     name: Deploy 🚀
@@ -48,13 +44,10 @@ jobs:
     
     steps:
     
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: .net-app
+     
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: "nt19.unoeuro.com"
           username: pmuk-test.dk
