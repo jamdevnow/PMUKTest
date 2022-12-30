@@ -4,6 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<RunAOTCompilation>true</RunAOTCompilation>
 		<UserSecretsId>87752518-32a8-42e2-a637-a03e79418c51</UserSecretsId>
 		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
 		<PublishTrimmed>true</PublishTrimmed>
