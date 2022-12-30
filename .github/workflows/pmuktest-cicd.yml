@@ -33,7 +33,7 @@ jobs:
         run: dotnet test --no-build --verbosity normal
         
       - name: dotnet Publish
-        run: dotnet publish -c Release --no-restore -o ${{env.DOTNET_ROOT}}/PMUKTest --sc true --runtime win-x86 -p:PublishTrimmed=true
+        run: dotnet publish -c Release --no-restore -o ./Release --sc true --runtime win-x86 -p:PublishTrimmed=true
         
       
         
@@ -52,5 +52,5 @@ jobs:
           server: "nt19.unoeuro.com"
           username: pmuk-test.dk
           password: ${{ secrets.ftp_password }}
-          local-dir: "/home/runner/work/PMUKTest/PMUKTest/"
+          localDir: "Release"
           server-dir: "/public_html/"
