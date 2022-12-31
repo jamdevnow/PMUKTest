@@ -61,3 +61,4 @@ jobs:
           username: pmuk-test.dk
           password: ${{ secrets.ftp_password }}
           server-dir: "/public_html/"
+          log-level: verbose
